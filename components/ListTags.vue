@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
     <template v-for="tag in tags">
-      <Tag :key="tag.slug" :name="tag.name" :slug="tag.slug"></Tag>
+      <Tag :key="tag.slug" :tag="tag"></Tag>
     </template>
   </div>
 </template>
