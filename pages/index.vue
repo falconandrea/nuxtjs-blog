@@ -26,6 +26,16 @@ export default {
       }
     }
   },
+  head: {
+    title: 'My personal blog',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'My website description'
+      }
+    ],
+  },
   created() {
     // Get tags
     const posts = [

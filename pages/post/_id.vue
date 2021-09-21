@@ -23,6 +23,16 @@ export default {
     return {
       slug: this.$route.params.id || ''
     }
+  },
+  head: {
+    title: 'Title post - My personal blog',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Short description of post'
+      }
+    ],
   }
 }
 </script>
