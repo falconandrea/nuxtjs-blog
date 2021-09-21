@@ -1,0 +1,25 @@
+<template>
+  <div class="w-full border-b-2 py-4">
+    <p><small>{{ post.date }}</small></p>
+    <h4 class="font-medium text-xl py-1">
+      <a :href="post.slug" title="" class="hover:text-blue-400">{{ post.title }}</a>
+    </h4>
+    <ListTags :tags="post.tags"></ListTags>
+    <p class="pt-2 text-gray-500">{{ post.intro }}</p>
+  </div>
+</template>
+
+<script>
+import ListTags from '../components/ListTags.vue'
+export default {
+  components: {
+    ListTags
+  },
+  props: {
+    post: {
+      type: Object,
+      default: null
+    }
+  },
+}
+</script>
