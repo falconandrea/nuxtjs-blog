@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     async getPosts() {
-      return await axios.get('https://jsonplaceholder.typicode.com/posts')
+      await axios.get('https://jsonplaceholder.typicode.com/posts')
         .then((response) => {
           // Get only first 10 posts from the list
           let posts = response.data.slice(0, 10)
