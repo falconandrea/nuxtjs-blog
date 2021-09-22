@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header></Header>
-    <div class="container flex flex-col lg:flex-row mx-auto pb-4">
-      <ListPosts :posts="posts"></ListPosts>
+    <div class="container mx-auto pb-4 flex flex-col lg:flex-row">
+      <ListPosts :posts="posts" :search="search"></ListPosts>
       <Sidebar />
     </div>
     <Footer></Footer>
@@ -22,26 +22,28 @@ export default {
   data() {
     return {
       posts: [],
+      search: null,
       fakeTags: [
         {slug: 'php', name: 'PHP'},
         {slug: 'laravel', name: 'Laravel'},
         {slug: 'vue', name: 'Vue'},
         {slug: 'frontend', name: 'FrontEnd'},
         {slug: 'backend', name: 'Backend'},
-      ],
+      ]
     }
   },
   head: {
-    title: 'My personal blog',
+    title: 'Posts - My personal blog',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'My website description'
+        content: 'List of posts'
       }
     ],
   },
   created() {
+    this.search = (this.$route.query && this.$route.query.search) ? this.$route.query.search : null
     // Get posts
     this.getPosts()
   },
@@ -49,8 +51,12 @@ export default {
     async getPosts() {
       return await axios.get('https://jsonplaceholder.typicode.com/posts')
         .then((response) => {
-          // Get only first 5 posts from the list
-          let posts = response.data.slice(0, 5)
+          // Get only first 10 posts from the list
+          let posts = response.data.slice(0, 10)
+          // Filter
+          if(this.search){
+            posts = posts.filter(post => post.title.includes(this.search))
+          }
           // Add Fake date and fake tags
           posts = posts.map(post => {
             // Get 2 random tags from fakeTags array

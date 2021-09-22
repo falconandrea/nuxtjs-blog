@@ -2,10 +2,10 @@
   <div class="w-full border-b-2 py-4">
     <p><small>{{ post.date }}</small></p>
     <h4 class="font-medium text-xl py-1">
-      <router-link :to="`/post/${post.slug}`" title="" class="hover:text-blue-400">{{ post.title }}</router-link>
+      <router-link :to="`/post/${post.id}`" title="" class="hover:text-blue-400">{{ post.title }}</router-link>
     </h4>
     <ListTags :tags="post.tags"></ListTags>
-    <p class="pt-2 text-gray-500">{{ post.intro }}</p>
+    <p class="pt-2 text-gray-500">{{ post.body }}</p>
   </div>
 </template>
 
@@ -16,10 +16,7 @@ export default {
     ListTags
   },
   props: {
-    post: {
-      type: Object,
-      default: null
-    }
+    post: null
   },
 }
 </script>

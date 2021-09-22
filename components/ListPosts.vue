@@ -1,8 +1,12 @@
 <template>
   <div class="p-4 w-full lg:w-2/3">
-    <template v-for="post in posts">
-      <ShortPost :key="post.slug" :post="post" />
+    <p v-if="search">Hai cercato: <i>{{ search }}</i></p>
+    <template v-if="posts.length > 0">
+      <template v-for="post in posts">
+        <ShortPost :key="post.id" :post="post" />
+      </template>
     </template>
+    <p v-else class="mt-8">Non sono stati trovati post</p>
   </div>
 </template>
 
@@ -13,10 +17,8 @@ export default {
     ShortPost
   },
   props: {
-    posts: {
-      type: Array,
-      default: null
-    }
+    posts: [],
+    search: null
   }
 }
 </script>
