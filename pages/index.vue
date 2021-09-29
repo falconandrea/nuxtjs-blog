@@ -1,23 +1,13 @@
 <template>
-  <div>
-    <Header></Header>
-    <div class="container flex flex-col lg:flex-row mx-auto pb-4">
-      <ListPosts :posts="posts"></ListPosts>
-      <Sidebar />
-    </div>
-    <Footer></Footer>
-  </div>
+  <ListPosts :posts="posts"></ListPosts>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
 import ListPosts from '../components/ListPosts.vue'
-import Sidebar from '../components/Sidebar.vue'
 export default {
   components: {
-    Header, Footer, ListPosts, Sidebar
+    ListPosts
   },
   data() {
     return {

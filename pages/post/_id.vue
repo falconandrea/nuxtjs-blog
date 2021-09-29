@@ -1,27 +1,17 @@
 <template>
-    <div>
-      <Header></Header>
-      <div class="container flex flex-col lg:flex-row mx-auto pb-4">
-        <div class="p-4 w-full lg:w-2/3">
-          <ListTags :tags="post.tags"></ListTags>
-          <h2>{{ post.title }}</h2>
-          <p>{{ post.body }}</p>
-        </div>
-        <Sidebar />
-      </div>
-      <Footer></Footer>
-    </div>
+  <div class="p-4 w-full lg:w-2/3">
+    <ListTags :tags="post.tags"></ListTags>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.body }}</p>
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '../../components/Header.vue'
-import Footer from '../../components/Footer.vue'
-import Sidebar from '../../components/Sidebar.vue'
 import ListTags from '../../components/ListTags.vue'
 export default {
   components: {
-    Header, Footer, Sidebar, ListTags
+    ListTags
   },
   data() {
     return {
