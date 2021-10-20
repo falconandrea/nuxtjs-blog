@@ -1,8 +1,8 @@
 <template>
   <div class="p-4 w-full lg:w-2/3">
+    <h2 class="text-gray-700 font-medium text-3xl py-4">{{ post.title }}</h2>
     <ListTags :tags="post.tags"></ListTags>
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.body }}</p>
+    <div class="text-gray-500 py-4">{{ post.body }}</div>
   </div>
 </template>
 
