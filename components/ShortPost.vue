@@ -5,7 +5,7 @@
       <router-link :to="`/post/${post.id}`" title="" class="text-gray-700 hover:text-blue-400">{{ post.title }}</router-link>
     </h4>
     <ListTags :tags="post.tags"></ListTags>
-    <p class="pt-2 text-gray-500">{{ post.body }}</p>
+    <p class="pt-2 text-gray-500">{{ post.intro }}</p>
   </div>
 </template>
 

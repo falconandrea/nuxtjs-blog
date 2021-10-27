@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import ListTags from '../components/ListTags.vue'
 export default {
   components: {
@@ -28,15 +29,19 @@ export default {
     }
   },
   created() {
-    // Get fake tags
-    const tags = [
-      {slug: 'php', name: 'PHP'},
-      {slug: 'laravel', name: 'Laravel'},
-      {slug: 'vue', name: 'Vue'},
-      {slug: 'frontend', name: 'FrontEnd'},
-      {slug: 'backend', name: 'Backend'},
-    ]
-    this.tags = tags
+    // Get tags
+    this.getTags()
+  },
+  methods: {
+    async getTags() {
+      await axios.get(process.env.API_URL + 'tags')
+        .then((response) => {
+          this.tags = response.data.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   }
 }
 </script>

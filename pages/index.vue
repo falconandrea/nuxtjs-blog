@@ -11,14 +11,7 @@ export default {
   },
   data() {
     return {
-      posts: [],
-      fakeTags: [
-        {slug: 'php', name: 'PHP'},
-        {slug: 'laravel', name: 'Laravel'},
-        {slug: 'vue', name: 'Vue'},
-        {slug: 'frontend', name: 'FrontEnd'},
-        {slug: 'backend', name: 'Backend'},
-      ],
+      posts: []
     }
   },
   head: {
@@ -37,27 +30,14 @@ export default {
   },
   methods: {
     async getPosts() {
-      await axios.get('https://jsonplaceholder.typicode.com/posts')
+      await axios.get(process.env.API_URL + 'posts')
         .then((response) => {
-          // Get only first 5 posts from the list
-          let posts = response.data.slice(0, 5)
-          // Add Fake date and fake tags
-          posts = posts.map(post => {
-            // Get 2 random tags from fakeTags array
-            post.tags = this.fakeTags.slice(0, 2).map(function () {
-              return this.splice(Math.floor(Math.random() * this.length), 1)[0];
-            }, this.fakeTags.slice());
-            // Add static date
-            post.date = '22/09/2021'
-            // Return update post detail
-            return post
-          })
-          this.posts = posts
+          this.posts = response.data.data
         })
         .catch((error) => {
           console.log(error)
         })
-    }
+    },
   }
 }
 </script>
