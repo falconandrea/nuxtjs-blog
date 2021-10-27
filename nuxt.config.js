@@ -35,6 +35,7 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/dotenv',
     // Google Fonts
     ['@nuxtjs/google-fonts', {
       families: {
