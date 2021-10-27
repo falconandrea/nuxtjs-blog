@@ -65,6 +65,11 @@ export default {
     ]
   ],
 
+  // Base route
+  router: {
+    base: process.env.ENVIRONMENT === 'development' ? '/' : '/blog/'
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
