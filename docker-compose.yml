@@ -1,11 +1,12 @@
 version: '3'
 
 services:
-  web:
-    build: .
-    volumes:
-      - .:/app
-      - /app/node_modules/
+  blog:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: blog
+    restart: always
     ports:
-      - 3030:3030
-    command: yarn build && yarn start
+      - '3030:3030'
+    command: 'npm run start'
