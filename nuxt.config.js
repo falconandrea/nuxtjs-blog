@@ -65,6 +65,13 @@ export default {
     ]
   ],
 
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  },
+
   // Base route
   router: {
     base: process.env.BASE_PATH
