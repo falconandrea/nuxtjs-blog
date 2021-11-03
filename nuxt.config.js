@@ -1,14 +1,14 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxtjs-blog',
+    title: 'Il mio blog personale',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'it'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Mi chiamo Andrea Falcon e questo è il mio blog personale' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -67,7 +67,7 @@ export default {
 
   // Base route
   router: {
-    base: process.env.ENVIRONMENT === 'development' ? '/' : '/blog/'
+    base: process.env.NODE_ENV === 'development' ? '/' : '/blog/'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
