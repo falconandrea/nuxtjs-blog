@@ -67,7 +67,7 @@ export default {
 
   // Base route
   router: {
-    base: process.env.NODE_ENV === 'development' ? '/' : '/blog/'
+    base: process.env.BASE_PATH
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
