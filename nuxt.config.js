@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'Il mio blog personale',
     htmlAttrs: {
-      lang: 'it'
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
