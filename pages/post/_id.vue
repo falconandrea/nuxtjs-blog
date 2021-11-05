@@ -10,7 +10,7 @@
 <script>
 import axios from 'axios'
 import ListTags from '../../components/ListTags.vue'
-import Prism from '~/plugins/prism'
+import Prism from '~/plugins/prism.js'
 export default {
   components: {
     ListTags
