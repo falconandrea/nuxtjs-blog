@@ -1,42 +1,41 @@
 <template>
-  <div class="p-4 w-full lg:w-2/3">
+  <div class="p-4 w-full lg:w-2/3 pt-8">
+    <p><small>{{ post.date }}</small></p>
     <h2 class="text-gray-700 font-medium text-3xl py-4">{{ post.title }}</h2>
     <ListTags :tags="post.tags"></ListTags>
-    <div class="text-gray-500 py-4">{{ post.body }}</div>
+    <div class="text-gray-500 py-4 container-post" v-html="post.text"></div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import ListTags from '../../components/ListTags.vue'
+import Prism from '~/plugins/prism'
 export default {
   components: {
     ListTags
+  },
+  mounted() {
+    Prism.highlightAll()
   },
   data() {
     return {
       slug: '',
       post: {
         title: '',
-        body: '',
+        text: '',
+        date: '',
         tags: []
-      },
-      fakeTags: [
-        {slug: 'php', name: 'PHP'},
-        {slug: 'laravel', name: 'Laravel'},
-        {slug: 'vue', name: 'Vue'},
-        {slug: 'frontend', name: 'FrontEnd'},
-        {slug: 'backend', name: 'Backend'},
-      ]
+      }
     }
   },
   head: {
-    title: 'Title post - My personal blog',
+    title: 'AndreaFalcon - Blog',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Short description of post'
+        content: 'Mi chiamo Andrea Falcon e sono uno sviluppatore Web Full-Stack. In questo blog cercherò di raccogliere le conosceneze e le informazioni che mi son state utili durante il mio lavoro.'
       }
     ],
   },
@@ -47,22 +46,24 @@ export default {
   },
   methods: {
     async getPost() {
-      await axios.get(`https://jsonplaceholder.typicode.com/posts/${this.id}`)
+      await axios.get(process.env.API_URL + 'posts/' + this.id)
         .then((response) => {
-          const post = response.data
-          // Add fake date
-          post.date = '22/09/2021'
-          // Add Fake tags
-          post.tags = this.fakeTags.slice(0, 2).map(function () {
-            return this.splice(Math.floor(Math.random() * this.length), 1)[0];
-          }, this.fakeTags.slice());
-
-          this.post = post
+          this.post = response.data.data
         })
         .catch((error) => {
           console.log(error)
         })
-    }
+    },
   }
 }
 </script>
+
+<style>
+  .container-post a {
+    text-decoration: underline;
+  }
+  .container-post strong,
+  .container-post b {
+    font-weight: 500;
+  }
+</style>
