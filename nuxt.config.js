@@ -1,3 +1,5 @@
+import { createSEOMeta } from './utils/seo.js'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -6,10 +8,9 @@ export default {
       lang: 'en'
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Ciao, mi chiamo Andrea Falcon e sono uno sviluppatore Web Full-Stack. Ho deciso di creare questo blog per tener traccia delle tecnologie e conoscenze che apprendo durante la mia formazione.' },
-      { name: 'format-detection', content: 'telephone=no' }
+      ...createSEOMeta({
+        description: 'Mi chiamo Andrea Falcon e sono uno sviluppatore Web Full-Stack. Ho deciso di creare questo blog per tener traccia delle tecnologie e conoscenze che apprendo durante la mia formazione.'
+      })
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/blog/favicon.ico' }

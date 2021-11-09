@@ -8,15 +8,17 @@
 </template>
 
 <script>
-import axios from 'axios'
 import ListTags from '../../components/ListTags.vue'
+import { createSEOMeta } from '../../utils/seo.js'
 import Prism from '~/plugins/prism.js'
 export default {
   components: {
     ListTags
   },
-  mounted() {
-    Prism.highlightAll()
+  async asyncData({params, $axios}) {
+    // Get posts
+    const { data } = await $axios.get(process.env.API_URL + 'posts/' + params.id)
+    return {post: data.data}
   },
   data() {
     return {
@@ -35,30 +37,15 @@ export default {
     return {
       title: this.post.seo_title + ' - AndreaFalcon.Dev',
       meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.post.seo_description
-        }
+      ...createSEOMeta({
+        description: this.post.seo_description
+        })
       ],
     }
   },
-  created() {
-    this.id = this.$route.params.id
-    // Get posts
-    this.getPost()
+  mounted() {
+    Prism.highlightAll()
   },
-  methods: {
-    async getPost() {
-      await axios.get(process.env.API_URL + 'posts/' + this.id)
-        .then((response) => {
-          this.post = response.data.data
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    },
-  }
 }
 </script>
 
