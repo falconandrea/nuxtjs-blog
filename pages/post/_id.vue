@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 w-full lg:w-2/3 pt-8">
     <p><small>{{ post.date }}</small></p>
-    <h2 class="text-gray-700 font-medium text-3xl py-4">{{ post.title }}</h2>
+    <h1 class="text-gray-700 font-medium text-3xl py-4">{{ post.title }}</h1>
     <ListTags :tags="post.tags"></ListTags>
     <div class="text-gray-500 py-4 container-post" v-html="post.text"></div>
   </div>
@@ -25,19 +25,23 @@ export default {
         title: '',
         text: '',
         date: '',
+        seo_title: '',
+        seo_description: '',
         tags: []
       }
     }
   },
-  head: {
-    title: 'AndreaFalcon - Blog',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Mi chiamo Andrea Falcon e sono uno sviluppatore Web Full-Stack. In questo blog cercherò di raccogliere le conosceneze e le informazioni che mi son state utili durante il mio lavoro.'
-      }
-    ],
+  head() {
+    return {
+      title: this.post.seo_title + ' - AndreaFalcon.Dev',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.seo_description
+        }
+      ],
+    }
   },
   created() {
     this.id = this.$route.params.id

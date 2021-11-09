@@ -8,7 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Mi chiamo Andrea Falcon e questo è il mio blog personale' },
+      { hid: 'description', name: 'description', content: 'Ciao, mi chiamo Andrea Falcon e sono uno sviluppatore Web Full-Stack. Ho deciso di creare questo blog per tener traccia delle tecnologie e conoscenze che apprendo durante la mia formazione.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
