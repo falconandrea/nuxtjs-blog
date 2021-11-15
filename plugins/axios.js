@@ -1,8 +1,11 @@
 export default function ({ $axios, redirect }) {
+  const https = require('https')
+
   $axios.baseURL = process.env.API_URL
-  $axios.onRequest(config => {
-    require('axios-debug-log')
-    config.headers.common['Content-Type'] = 'application/json'
-    $axios.defaults.xsrfHeaderName = 'X-CSRF-TOKEN'
-  })
+  $axios.defaults.timeout = 3000
+  $axios.defaults.headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+  $axios.defaults.httpsAgent = new https.Agent({ keepAlive: true })
 }
