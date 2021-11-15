@@ -11,7 +11,7 @@ export default {
   },
   async asyncData({route, $axios}) {
     // Get posts
-    const { data } = await $axios.get(process.env.API_URL + 'posts?search=' + route.query.search)
+    const { data } = await $axios.get('posts?search=' + route.query.search)
     return {posts: data.data}
   },
   data() {

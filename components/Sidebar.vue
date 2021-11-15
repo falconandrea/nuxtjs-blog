@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import ListTags from '../components/ListTags.vue'
 export default {
   components: {
@@ -39,7 +38,7 @@ export default {
   },
   methods: {
     async getTags() {
-      await axios.get(process.env.API_URL + 'tags')
+      await this.$axios.get('tags')
         .then((response) => {
           this.tags = response.data.data
         })

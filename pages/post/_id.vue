@@ -17,7 +17,7 @@ export default {
   },
   async asyncData({params, $axios}) {
     // Get posts
-    const { data } = await $axios.get(process.env.API_URL + 'posts/' + params.id)
+    const { data } = await $axios.get('posts/' + params.id)
     return {post: data.data}
   },
   data() {
