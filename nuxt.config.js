@@ -71,6 +71,10 @@ export default {
     }
   },
 
+  server: {
+    host: '0' // default: localhost
+  },
+
   // Base route
   router: {
     base: process.env.BASE_PATH
@@ -78,6 +82,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
+    proxy: false,
+    debug: process.env.NODE_ENV !== 'production',
     baseURL: process.env.API_URL
   },
 

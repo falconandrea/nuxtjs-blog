@@ -11,6 +11,7 @@ export default {
   },
   async asyncData({$axios}) {
     // Get posts
+    console.log('asyncdata index')
     const { data } = await $axios.get('posts')
     return {posts: data.data}
   },

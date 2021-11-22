@@ -11,4 +11,7 @@ export default function ({ $axios, redirect }) {
     'Content-Type': 'application/json'
   }
   $axios.defaults.httpsAgent = new https.Agent({ keepAlive: true })
+  $axios.onRequest(config => {
+    $axios.setHeader('Referer', (process.env.REFERER || config.headers.common.referer))
+  })
 }
