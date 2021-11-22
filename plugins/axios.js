@@ -3,7 +3,7 @@ export default function ({ $axios, redirect }) {
 
   $axios.baseURL = process.env.API_URL
 
-  $axios.defaults.timeout = 3000
+  $axios.defaults.timeout = 8000
   $axios.defaults.headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json'
