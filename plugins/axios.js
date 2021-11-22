@@ -14,12 +14,16 @@ export default function ({ $axios, redirect }) {
   if (process.env.NODE_ENV !== 'production') {
     console.log('baseurl', $axios.baseURL)
 
+    $axios.onRequest(config => {
+      console.log('onRequest', config)
+    })
+
     $axios.onResponse(response => {
-      console.log(`[${response.status}] ${response.request.path}`)
+      console.log(`onResponse [${response.status}] ${response.request.path}`)
     })
 
     $axios.onError(err => {
-      console.log(`[${err.response && err.response.status}] ${err.response && err.response.request.path}`)
+      console.log(`onError [${err.response && err.response.status}] ${err.response && err.response.request.path}`)
       console.log(err.response && err.response.data)
     })
   }
