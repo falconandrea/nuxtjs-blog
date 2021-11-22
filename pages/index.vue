@@ -11,7 +11,7 @@ export default {
   },
   async asyncData({$axios}) {
     // Get posts
-    const { data } = await $axios.get('posts').catch(err => console.log('posts error', err))
+    const { data } = await $axios.get('posts')
     return {posts: data.data}
   },
   data() {

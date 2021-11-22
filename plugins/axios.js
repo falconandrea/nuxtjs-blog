@@ -24,7 +24,7 @@ export default function ({ $axios, redirect }) {
 
     $axios.onError(err => {
       console.log(`onError [${err.response && err.response.status}] ${err.response && err.response.request.path}`)
-      console.log(err.response && err.response.data)
+      console.log(err)
     })
   }
 }
