@@ -2,6 +2,9 @@ export default function ({ $axios, redirect }) {
   const https = require('https')
 
   $axios.baseURL = process.env.API_URL
+
+  console.log('baseurl', $axios.baseURL)
+
   $axios.defaults.timeout = 3000
   $axios.defaults.headers = {
     Accept: 'application/json',
