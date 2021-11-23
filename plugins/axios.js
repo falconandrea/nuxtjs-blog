@@ -6,7 +6,8 @@ export default function ({ $axios, redirect }) {
   $axios.defaults.timeout = 8000
   $axios.defaults.headers = {
     Accept: 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
   }
   $axios.defaults.headers.referer = process.env.REFERER
   $axios.defaults.httpsAgent = new https.Agent({ keepAlive: true })
