@@ -82,9 +82,12 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
+    baseURL: process.env.API_URL,
     proxy: false,
+    proxyHeaders: false,
+    credentials: false,
+    mode: 'no-cors',
     debug: process.env.NODE_ENV !== 'production',
-    baseURL: process.env.API_URL
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
