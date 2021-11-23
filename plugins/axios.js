@@ -9,7 +9,6 @@ export default function ({ $axios, redirect }) {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
-  $axios.defaults.headers.referer = process.env.REFERER
   $axios.defaults.httpsAgent = new https.Agent({ keepAlive: true })
 
   if (process.env.NODE_ENV !== 'production') {
